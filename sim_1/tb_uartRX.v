@@ -2,16 +2,16 @@
 
 module tb_uartRX;
 
-	reg clk; 
+    reg clk; 
     reg reset;
     reg rx;
     wire [7:0] r_data;
     wire rx_done;
-	wire baud_tick;
+    wire baud_tick;
 	
 	localparam baud_gen_divisior = 54, // # 100Mhz / (16 * Baudrate) (Baudrate = 115200)
-               data_bits = 8,          // # data bits
-               stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
+                   data_bits = 8,          // # data bits
+                   stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
 	           bit_ticks = 16;         // # ticks for bits
 			   
 	localparam one_bit_time = 8680;  // One bit time = 8.68us
@@ -23,8 +23,8 @@ module tb_uartRX;
 	
 	initial begin	
 		clk    = 1'b0;       
-        reset  = 1'b0;
-        rx     = 1'b1;	
+                reset  = 1'b0;
+                rx     = 1'b1;	
 	end
 	
 	always begin clk <= ~clk; #5; end
