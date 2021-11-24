@@ -2,13 +2,13 @@ module uart_tx
     #(
         parameter DBIT = 8,           // # data bits
                   S_TICK_LIM = 16,    // # ticks for bits
-				  STOP_BITS_LIM = 16  // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)
+		  STOP_BITS_LIM = 16  // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)
     )
     
     (
     input wire clk, reset, tx_start,
     output reg tx = 1'b1,
-	input wire  s_tick,
+    input wire  s_tick,
     output reg tx_done_tick = 1'b0,
     input [7:0] data_in
     );
