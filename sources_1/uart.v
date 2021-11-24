@@ -10,8 +10,8 @@ module uart(
 	wire baud_tick;
 	
 	localparam baud_gen_divisior = 54, // # 100Mhz / (16 * Baudrate) (Baudrate = 115200)
-               data_bits = 8,          // # data bits
-               stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
+                   data_bits = 8,          // # data bits
+                   stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
 	           bit_ticks = 16;         // # ticks for bits
 	
 	uart_baudrate_generator #(.divisior(baud_gen_divisior)) baud_gen(.clk(clk), .reset(reset), .uart_tick(baud_tick));
