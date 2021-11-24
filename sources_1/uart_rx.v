@@ -2,7 +2,7 @@ module uart_rx
     #(
         parameter DBIT = 8,           // # data bits
                   S_TICK_LIM = 16,    // # ticks for bits
-				  STOP_BITS_LIM = 16  // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)
+		  STOP_BITS_LIM = 16  // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)
     )
     
     (
@@ -62,11 +62,9 @@ module uart_rx
 				end
 				
 				data: begin
-					//data_out[7] <= rx;
 					if (s_tick) begin						
 						if (s_tick_counter == S_TICK_LIM - 1) begin
 							s_tick_counter <= 4'b0;
-							//data_out <= data_out >> 1;
 							data_out <= {rx, data_out[7:1]};
 							if (bit_counter == DBIT - 1) begin
 								bit_counter <= 3'b0;
