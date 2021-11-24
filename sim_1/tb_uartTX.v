@@ -2,17 +2,17 @@
 
 module tb_uartTX;
 
-	reg clk; 
+    reg clk; 
     reg reset;
     wire tx;
     reg [7:0] t_data;
     wire tx_done;
-	reg tx_start;
-	wire baud_tick;
+    reg tx_start;
+    wire baud_tick;
 	
 	localparam baud_gen_divisior = 54, // # 100Mhz / (16 * Baudrate) (Baudrate = 115200)
-               data_bits = 8,          // # data bits
-               stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
+                   data_bits = 8,          // # data bits
+                   stop_ticks = 16,        // # ticks for stop bits (One bit=16, 1.5 bit=24 Two bit=32)   
 	           bit_ticks = 16;         // # ticks for bits
 	
 	uart_baudrate_generator #(.divisior(baud_gen_divisior)) baud_gen(.clk(clk), .reset(reset), .uart_tick(baud_tick));
@@ -22,8 +22,8 @@ module tb_uartTX;
 	
 	initial begin	
 		clk = 1'b0;       
-        reset=1'b0;
-        tx_start=1'b0;
+                reset=1'b0;
+                tx_start=1'b0;
 		t_data=8'b0;		
 	end
 	
@@ -49,8 +49,6 @@ module tb_uartTX;
 		$display("Simulasyon Tamamlandi");
 		$finish;
 		//$stop;
-	end
-	
-	
+	end	
 
 endmodule
